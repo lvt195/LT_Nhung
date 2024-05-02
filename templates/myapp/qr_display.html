@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+</head>
+<body>
+    <h1>QR Code Scanner</h1>
+    <div id="qrContent"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Hàm để gọi view Django để đọc mã QR và hiển thị nó trên giao diện
+            function scanQR() {
+                $.ajax({
+                    url: '{% url "qr_scanner" %}',
+                    success: function(response) {
+                        if (response.qr_contents) {
+                            $('#qrContent').text(response.qr_contents);
+                        } else {
+                            $('#qrContent').text('No QR code found.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+
+            // Bắt đầu quét mã QR khi trang đã sẵn sàng
+            scanQR();
+        });
+    </script>
+</body>
+</html>

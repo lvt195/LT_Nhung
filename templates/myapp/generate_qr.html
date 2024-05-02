@@ -1,0 +1,57 @@
+<!-- templates/generate_qr.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate QR</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="text-center">Generate QR Code</h1>
+                    </div>
+                    <div class="card-body">
+                        <form action="{% url 'generate_qr' %}" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="household_name" class="form-label">Household Name:</label>
+                                <input type="text" id="household_name" name="household_name" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="phone_number" class="form-label">Phone Number:</label>
+                                <input type="text" id="phone_number" name="phone_number" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="meter_code" class="form-label">Meter Code:</label>
+                                <input type="text" id="meter_code" name="meter_code" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="current_number_water" class="form-label">Current Number Water:</label>
+                                <input type="text" id="current_number_water" name="current_number_water" class="form-control">
+                            </div>
+
+                            
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Generate QR</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
