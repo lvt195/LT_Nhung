@@ -20,27 +20,15 @@
                         <form action="{% url 'generate_qr' %}" method="post">
                             {% csrf_token %}
                             <div class="mb-3">
-                                <label for="household_name" class="form-label">Household Name:</label>
-                                <input type="text" id="household_name" name="household_name" class="form-control">
+                                <label for="product_name" class="form-label">Tên sản phẩm:</label>
+                                <input type="text" id="product_name" name="product_name" class="form-control">
                             </div>
 
                             <div class="mb-3">
-                                <label for="phone_number" class="form-label">Phone Number:</label>
-                                <input type="text" id="phone_number" name="phone_number" class="form-control">
+                                <label for="address" class="form-label">Địa chỉ:</label>
+                                <input type="text" id="address" name="address" class="form-control">
                             </div>
-
-                            <div class="mb-3">
-                                <label for="meter_code" class="form-label">Meter Code:</label>
-                                <input type="text" id="meter_code" name="meter_code" class="form-control">
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="current_number_water" class="form-label">Current Number Water:</label>
-                                <input type="text" id="current_number_water" name="current_number_water" class="form-control">
-                            </div>
-
                             
-
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Generate QR</button>
                             </div>

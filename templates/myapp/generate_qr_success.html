@@ -18,7 +18,9 @@
                     </div>
                     <div class="card-body text-center">
                         <img src="{% static qr_image_relative_path %}" class="img-fluid mb-3" alt="QR Code">
-                        <p>Metter Code: {{ meter_code }}</p>
+                        <p>Tên : {{ product_name }}</p>
+                        <br>
+                        <p>Địa chỉ : {{ address }}</p>
                         <a href="{% url 'generate_qr' %}" class="btn btn-primary">Back to generate_qr</a>
                         <a href="{% url 'qr' %}" class="btn btn-primary">Back to QR</a>
                     </div>
@@ -34,7 +36,7 @@
     <script>
         // Hiển thị thông báo cửa sổ khi trang được tải
         $(document).ready(function() {
-            alert("QR code has been successfully generated. Metter Code: {{ meter_code }}");
+            alert("QR code tạo thành công. Địa chỉ: {{ address }}");
         });
     </script>
 </body>

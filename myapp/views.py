@@ -18,25 +18,19 @@ class QRView(TemplateView):
 def generate_qr_view(request):
     if request.method == 'POST':
         # Lấy dữ liệu từ request POST
-        household_name = request.POST.get('household_name', '')
-        phone_number = request.POST.get('phone_number', '')
-        meter_code = request.POST.get('meter_code', '')
-        current_number_water = request.POST.get('current_number_water', '')
-        lastest_updated = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
+        product_name = request.POST.get('product_name', '')
+        address = request.POST.get('address', '')
+        print(address)
         # Tạo dữ liệu JSON cho mã QR
         qr_data = {
-            "household_name": household_name,
-            "phone_number": phone_number,
-            "meter_code": meter_code,
-            "current_number_water": current_number_water,
-            "lastest_updated": lastest_updated
+            "product_name": product_name,
+            "address": address,
         }
 
         # Chuyển đổi từ điển thành chuỗi JSON
         qr_json = json.dumps(qr_data)
 
-        file_name = f"qr_{meter_code}.png"
+        file_name = f"qr_{product_name}.png"
 
         # Tạo đường dẫn đầy đủ cho tệp QR
         file_path = os.path.join(settings.BASE_DIR, 'static', 'images', file_name)
@@ -46,7 +40,7 @@ def generate_qr_view(request):
 
         # Trả về đường dẫn tương đối của tệp QR để hiển thị trên giao diện
         qr_image_relative_path = os.path.join('images', file_name)
-        return render(request, 'myapp/generate_qr_success.html', {'qr_image_relative_path': qr_image_relative_path, 'meter_code': meter_code})
+        return render(request, 'myapp/generate_qr_success.html', {'qr_image_relative_path': qr_image_relative_path, 'product_name': product_name, 'address': address})
 
     return render(request, 'myapp/generate_qr.html')
 
